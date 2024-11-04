@@ -93,13 +93,35 @@ nmake</NMakeReBuildCommandLine>
 cd ../External/Detours
 nmake clean</NMakeCleanCommandLine>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NMakeOutput>Detours.exe</NMakeOutput>
-    <NMakePreprocessorDefinitions>_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NMakeOutput>Detours.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <PublicIncludeDirectories>$(SolutionDir)\External\Detours\include;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <NMakeBuildCommandLine>SET DETOURS_TARGET_PROCESSOR=$(PlatformTarget)
+cd ../External/Detours
+nmake</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>SET DETOURS_TARGET_PROCESSOR=$(PlatformTarget)
+cd ../External/Detours
+nmake clean
+nmake</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>SET DETOURS_TARGET_PROCESSOR=$(PlatformTarget)
+cd ../External/Detours
+nmake clean</NMakeCleanCommandLine>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeOutput>Detours.exe</NMakeOutput>
+    <NMakePreprocessorDefinitions>_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <PublicIncludeDirectories>$(SolutionDir)\External\Detours\include;$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <NMakeBuildCommandLine>SET DETOURS_TARGET_PROCESSOR=$(PlatformTarget)
+cd ../External/Detours
+nmake</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>SET DETOURS_TARGET_PROCESSOR=$(PlatformTarget)
+cd ../External/Detours
+nmake clean
+nmake</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>SET DETOURS_TARGET_PROCESSOR=$(PlatformTarget)
+cd ../External/Detours
+nmake clean</NMakeCleanCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>

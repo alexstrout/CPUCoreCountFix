@@ -84,6 +84,9 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 
 // Export function to impersonate DirectInput8 library
 // Original library paths, it will break in case of non standard windows install
+#ifdef _WIN64
+#define ORIGINAL_DLL_PATH_64BIT_SYSTEM "C:\\Windows\\System32\\DINPUT8.dll"
+#else //_WIN64
 #define ORIGINAL_DLL_PATH_64BIT_SYSTEM "C:\\Windows\\SysWOW64\\DINPUT8.dll"
 #define ORIGINAL_DLL_PATH_32BIT_SYSTEM "C:\\Windows\\DINPUT8.dll"
 
@@ -106,6 +109,7 @@ static BOOL Is64BitOS()
 }
 
 static const BOOL IS_64BIT_OS = Is64BitOS();
+#endif //_WIN64
 
 #include "Unknwn.h"
 
@@ -119,7 +123,11 @@ extern "C" HRESULT WINAPI DirectInput8Create(HINSTANCE hinst,
 {
 	// Load original DINPUT8.dll and then call DirectInput8Create from it
 	static HMODULE moduleHandle = LoadLibrary(
+#ifdef _WIN64
+		TEXT(ORIGINAL_DLL_PATH_64BIT_SYSTEM)
+#else //_WIN64
 		IS_64BIT_OS ? TEXT(ORIGINAL_DLL_PATH_64BIT_SYSTEM) : TEXT(ORIGINAL_DLL_PATH_32BIT_SYSTEM)
+#endif //_WIN64
 	);
 
 	if (moduleHandle == NULL)
