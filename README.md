@@ -2,11 +2,11 @@
 
 x64-compatible fork of [adrian-lebioda/SpaceMarineCoreFix](https://github.com/adrian-lebioda/SpaceMarineCoreFix) - itself inspired by [maximumgame/DOW2CoreFix](https://github.com/maximumgame/DOW2CoreFix) - for games that have issues with high-end multicore processors (e.g. 16 or more cores) and happen to use DirectInput 8.
 
-This DLL uses [Microsoft Detours](https://github.com/microsoft/Detours) to modify the return values of [GetSystemInfo](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsysteminfo) and [GetLogicalProcessorInformation](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformation) to a **maximum of 12 CPU cores**. (The true core count is still returned if fewer, in which case you would not need this fix anyway.)
+This DLL uses [Microsoft Detours](https://github.com/microsoft/Detours) to limit the return values of [GetSystemInfo](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsysteminfo) and [GetLogicalProcessorInformation](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformation) to a **maximum of 12 CPU cores**. (The true core count is still returned if fewer, in which case you would not need this fix anyway.)
 
 ## Installation
 
-1. Download latest version from [releases](/releases):
+1. Download latest version from [releases](https://github.com/alexstrout/CPUCoreCountFix/releases):
    - For 64-bit apps, use **"x64"** version.
    - For 32-bit apps, use **"x86"** version.
 2. Download and install **Visual Studio 2022 Redistributable**:
