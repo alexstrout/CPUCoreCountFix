@@ -88,7 +88,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 #define ORIGINAL_DLL_PATH_64BIT_SYSTEM "C:\\Windows\\System32\\DINPUT8.dll"
 #else //_WIN64
 #define ORIGINAL_DLL_PATH_64BIT_SYSTEM "C:\\Windows\\SysWOW64\\DINPUT8.dll"
-#define ORIGINAL_DLL_PATH_32BIT_SYSTEM "C:\\Windows\\DINPUT8.dll"
+#define ORIGINAL_DLL_PATH_32BIT_SYSTEM "C:\\Windows\\System32\\DINPUT8.dll"
 
 static BOOL Is64BitOS()
 {
